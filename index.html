@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Canvas</title>
+</head>
+<style>
+    #example {
+        margin: 30px;
+    }
+</style>
+<body>
+<canvas id='example'>Обновите браузер</canvas>
+<script>
+    const scale = 20;
+    const shift = 0.5;
+    var c_canvas = document.getElementById("example");
+    var context = c_canvas.getContext("2d");
+    c_canvas.height = 320 + shift * 2;
+    c_canvas.width = 480 + shift * 2;
+
+    for (var x = shift; x < c_canvas.width; x += scale) {
+        context.moveTo(x, 0);
+        context.lineTo(x, c_canvas.height);
+    }
+    for (var y = shift; y < c_canvas.height; y += scale) {
+        context.moveTo(0, y);
+        context.lineTo(c_canvas.width, y);
+    }
+    context.strokeStyle = "#ccc";
+    context.stroke();
+
+
+    context.beginPath();
+    //    context.moveTo(0, 40);
+    //    context.lineTo(240, 40);
+    //    context.moveTo(260, 40);
+    //    context.lineTo(500, 40);
+    //    context.moveTo(495, 35);
+    //    context.lineTo(500, 40);
+    //    context.lineTo(495, 45);
+    //    context.moveTo(60, 0);
+    //
+    //
+    //    context.lineTo(60, 153);
+    //    context.moveTo(60, 173);
+    //    context.lineTo(60, 375);
+    //    context.moveTo(65, 370);
+    //    context.lineTo(60, 375);
+    //    context.lineTo(55, 370);
+    context.strokeStyle = "#000";
+    context.stroke();
+
+    DrawRect(0, 1, 3, 3);
+    DrawRect(2, 2, 6, 4);
+    DrawRect(1, 0, 3, 5);
+    function DrawRect(x1, y1, x2, y2) {
+        const scale = 20;
+        const shift = 0.5;
+        var c_canvas = document.getElementById("example");
+        var context = c_canvas.getContext("2d");
+        var rect_width = x2 * scale - x1 * scale;
+        var rect_height = y2 * scale - y1 * scale;
+        context.strokeRect(shift + x1 * scale, shift + y1 * scale, rect_width, rect_height);
+    }
+
+
+</script>
+</body>
+</html>
